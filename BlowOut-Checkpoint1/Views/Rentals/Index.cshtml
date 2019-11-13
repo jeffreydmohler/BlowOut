@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BlowOut_Checkpoint1.Models.Rentals>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="~/Content/Site.css" />
+
+<h2>Rentals</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-md-4">
+        <h3>@Html.DisplayFor(modelItem => item.InstrumentName)</h3>
+       
+        <p>
+            @{ 
+                String src = "";
+                int iCode = item.InstrumentCode;
+
+                switch (iCode)
+                {
+                    case 1:
+                        src = "/Content/Images/Trumpet.png";
+                        break;
+                    case 2:
+                        src = "/Content/Images/trombone.jpg";
+                        break;
+                    case 3:
+                        src = "/Content/Images/tuba.jpg";
+                        break;
+                    case 4:
+                        src = "/Content/Images/flute.jpg";
+                        break;
+                    case 5:
+                        src = "/Content/Images/clarinet.jpg";
+                        break;
+                    case 6:
+                        src = "/Content/Images/saxophone.jpg";
+                        break;
+                }
+                <a href="@Url.Action("CheckPrices", "Rentals")"> <img src="@src" /></a>
+            }
+        </p>
+    </div>
+    }
+</div>
+
