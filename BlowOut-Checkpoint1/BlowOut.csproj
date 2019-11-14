@@ -134,6 +134,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\1105988-vertical-music-instrument-wallpaper-2560x1600.jpg" />
     <Content Include="Content\Images\clarinet.jpg" />
     <Content Include="Content\Images\flute.jpg" />
     <Content Include="Content\Images\saxophone.jpg" />

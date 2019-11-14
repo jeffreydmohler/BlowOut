@@ -9,6 +9,7 @@ img {
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    color: floralwhite
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -24,6 +25,9 @@ body {
     white-space: normal;
 }
 
+p {
+    color: floralwhite
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
