@@ -1,5 +1,11 @@
-﻿.myFooterTest {
+﻿.myFooterText {
+    font-size: 12px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
 
+.bg {
+    background-image: url(https://image.freepik.com/free-vector/piano-keys-jazz-live-concert-music-background_100823-2781.jpg);
 }
 
 img {

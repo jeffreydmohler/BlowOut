@@ -40,7 +40,7 @@
                         src = "/Content/Images/saxophone.jpg";
                         break;
                 }
-                <a href="@Url.Action("CheckPrices", "Rentals")"> <img src="@src" /></a>
+                <a href="@Url.Action("CheckPrices", "Rentals", new { iCode = iCode })"> <img src="@src" /></a>
             }
         </p>
     </div>

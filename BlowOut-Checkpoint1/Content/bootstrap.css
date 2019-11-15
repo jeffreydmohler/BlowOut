@@ -1291,7 +1291,7 @@ p {
 }
 .lead {
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.4;
 }
@@ -3455,6 +3455,7 @@ fieldset[disabled] .btn-link:focus {
 .btn-block {
   display: block;
   width: 100%;
+  color: blue;
 }
 .btn-block + .btn-block {
   margin-top: 5px;

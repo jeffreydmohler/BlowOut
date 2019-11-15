@@ -25,9 +25,38 @@ namespace BlowOut_Checkpoint1.Controllers
             return View(lstRentals);
         }
 
-        public ActionResult CheckPrices()
+        public ActionResult CheckPrices(int iCode)
         {
+            Rentals oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
+
+            ViewBag.InstrumentName = oInstrument.InstrumentName;
+            ViewBag.Used = "";
+            ViewBag.New = "";
+
+
             return View(lstRentals);
+        }
+
+        public ActionResult UsedPrice(string sName)
+        {
+            Rentals oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
+
+            ViewBag.InstrumentName = oInstrument.InstrumentName;
+            ViewBag.Used = oInstrument.UsedPrice;
+            ViewBag.New = "";
+
+            return View("CheckPrices");
+        }
+
+        public ActionResult NewPrice(string sName)
+        {
+            Rentals oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
+
+            ViewBag.InstrumentName = oInstrument.InstrumentName;
+            ViewBag.Used = "";
+            ViewBag.New = oInstrument.NewPrice;
+
+            return View("CheckPrices");
         }
     }
 }
