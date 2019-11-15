@@ -5,17 +5,22 @@
 }
 
 .bg {
-    background-image: url(https://image.freepik.com/free-vector/piano-keys-jazz-live-concert-music-background_100823-2781.jpg);
+    background-color: black;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
-img {
-    height: 100px;
+
+.img {
+    height: 150px;
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
     color: floralwhite
+}
+.body {
+    padding-top: 50px;
+   
 }
 
 /* Set padding to keep content from hitting the edges */

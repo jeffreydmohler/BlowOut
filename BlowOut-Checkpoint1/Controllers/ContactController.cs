@@ -17,6 +17,7 @@ namespace BlowOut_Checkpoint1.Controllers
             return View();
         }
      
+        //sends an email to email put in url.
         public ActionResult Email(string name, string email)
         {
             string sName = name;

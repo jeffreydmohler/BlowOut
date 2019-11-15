@@ -9,6 +9,7 @@ namespace BlowOut_Checkpoint1.Controllers
 {
     public class RentalsController : Controller
     {
+        //list of all rental items using rentals class
         public static List<Rentals> lstRentals = new List<Rentals>()
         {
             new Rentals{ InstrumentCode = 1, InstrumentName = "Trumpet", NewPrice = "$55 a month", UsedPrice = "$25 a month"},
@@ -25,14 +26,16 @@ namespace BlowOut_Checkpoint1.Controllers
             return View(lstRentals);
         }
 
+        //returns basic page when you click on instruments
         public ActionResult CheckPrices(int iCode)
         {
+            //finds rental object on instrument code
             Rentals oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
 
+            //loads up viewbag for each item wanted
             ViewBag.InstrumentName = oInstrument.InstrumentName;
             ViewBag.Used = "";
             ViewBag.New = "";
-
 
             return View(lstRentals);
         }
@@ -41,6 +44,7 @@ namespace BlowOut_Checkpoint1.Controllers
         {
             Rentals oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
 
+            //shows the used price
             ViewBag.InstrumentName = oInstrument.InstrumentName;
             ViewBag.Used = oInstrument.UsedPrice;
             ViewBag.New = "";
@@ -52,6 +56,7 @@ namespace BlowOut_Checkpoint1.Controllers
         {
             Rentals oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
 
+            //shows the new price
             ViewBag.InstrumentName = oInstrument.InstrumentName;
             ViewBag.Used = "";
             ViewBag.New = oInstrument.NewPrice;

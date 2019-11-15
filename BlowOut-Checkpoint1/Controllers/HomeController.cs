@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Name: Jeffrey Mohler, Natalie Jacobsen, Eric Louis, Calen Johnson
+//Description: This website is a instrument rentals page that allows the user to see available instrument and prices. It also sends emails to specified users.
+//Date: November 15, 2019
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

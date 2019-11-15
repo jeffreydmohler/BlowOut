@@ -1,26 +1,30 @@
-﻿@model IEnumerable<BlowOut_Checkpoint1.Models.Rentals>
+﻿<body class="body">
 
-@{
-    ViewBag.Title = "CheckPrices";
-}
+    @model IEnumerable<BlowOut_Checkpoint1.Models.Rentals>
 
-<link rel="stylesheet" href="~/Content/Site.css" />
+    @{
+        ViewBag.Title = "CheckPrices";
+    }
 
-<h2>@ViewBag.InstrumentName</h2>
+    <link rel="stylesheet" href="~/Content/Site.css" />
 
-@{string sName = ViewBag.InstrumentName;}
-<button class="btn-block" onclick="location.href='@Url.Action("UsedPrice", "Rentals", new { sName = sName })'">View Used Price</button>
-<p> @ViewBag.Used </p>
-<button class="btn-block" onclick="location.href='@Url.Action("NewPrice", "Rentals", new { sName = sName })'">View New Price</button>
-<p> @ViewBag.New </p>
+    <h2>@ViewBag.InstrumentName</h2>
 
-<br /><br />
-<button class="btn-block" onclick="location.href='@Url.Action("Index", "Rentals")'">Back to Instrument Rentals</button>
+    @{ //variable to pass back to other methods
+        string sName = ViewBag.InstrumentName;}
+    <button class="btn-block" onclick="location.href='@Url.Action("UsedPrice", "Rentals", new { sName = sName })'">View Used Price</button>
+    <p> @ViewBag.Used </p>
+    <button class="btn-block" onclick="location.href='@Url.Action("NewPrice", "Rentals", new { sName = sName })'">View New Price</button>
+    <p> @ViewBag.New </p>
 
-<div class=“card” style=“width: 30rem;“>
-    <div class=“card-body”>
-        <h5 class=“card-title”>Note</h5>
-        <h6 class=“card-subtitle mb-2 text-muted”>Renting Policy</h6>
-        <p class=“card-text”>Once the 18 month of a rental has been achieved, the client owns the instrument. If they return it at any time before 3 months, there will be a $200 re-stocking fee. If they return it after 3 months they forfeit any equity in the instrument.</p>
+    <br /><br />
+    <button class="btn-block" onclick="location.href='@Url.Action("Index", "Rentals")'">Back to Instrument Rentals</button>
+
+    <div class=“card” style=“width: 30rem;“>
+        <div class=“card-body”>
+            <h5 class=“card-title”>Note</h5>
+            <h6 class=“card-subtitle mb-2 text-muted”>Renting Policy</h6>
+            <p class=“card-text”>Once the 18 month of a rental has been achieved, the client owns the instrument. If they return it at any time before 3 months, there will be a $200 re-stocking fee. If they return it after 3 months they forfeit any equity in the instrument.</p>
+        </div>
     </div>
-</div>
+</body>
