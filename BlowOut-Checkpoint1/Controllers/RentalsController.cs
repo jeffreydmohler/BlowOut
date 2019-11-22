@@ -10,14 +10,14 @@ namespace BlowOut_Checkpoint1.Controllers
     public class RentalsController : Controller
     {
         //list of all rental items using rentals class
-        public static List<Rentals> lstRentals = new List<Rentals>()
+        public static List<Instrument> lstRentals = new List<Instrument>()
         {
-            new Rentals{ InstrumentCode = 1, InstrumentName = "Trumpet", NewPrice = "$55 a month", UsedPrice = "$25 a month"},
-            new Rentals{ InstrumentCode = 2, InstrumentName = "Trombone", NewPrice = "$60 a month", UsedPrice = "$35 a month"},
-            new Rentals{ InstrumentCode = 3, InstrumentName = "Tuba", NewPrice = "$70 a month", UsedPrice = "$50 a month"},
-            new Rentals{ InstrumentCode = 4, InstrumentName = "Flute", NewPrice = "$40 a month", UsedPrice = "$25 a month"},
-            new Rentals{ InstrumentCode = 5, InstrumentName = "Clarinet", NewPrice = "$35 a month", UsedPrice = "$27 a month"},
-            new Rentals{ InstrumentCode = 6, InstrumentName = "Saxophone", NewPrice = "$42 a month", UsedPrice = "$30 a month"},
+            new Instrument{ InstrumentCode = 1, InstrumentName = "Trumpet", Price = 55},
+            new Instrument{ InstrumentCode = 2, InstrumentName = "Trombone", Price = 60},
+            new Instrument{ InstrumentCode = 3, InstrumentName = "Tuba", Price = 70},
+            new Instrument{ InstrumentCode = 4, InstrumentName = "Flute", Price = 40},
+            new Instrument{ InstrumentCode = 5, InstrumentName = "Clarinet", Price = 35},
+            new Instrument{ InstrumentCode = 6, InstrumentName = "Saxophone", Price = 42},
         };
 
         // GET: Rentals
@@ -30,7 +30,7 @@ namespace BlowOut_Checkpoint1.Controllers
         public ActionResult CheckPrices(int iCode)
         {
             //finds rental object on instrument code
-            Rentals oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
+            Instrument oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
 
             //loads up viewbag for each item wanted
             ViewBag.InstrumentName = oInstrument.InstrumentName;
@@ -42,11 +42,11 @@ namespace BlowOut_Checkpoint1.Controllers
 
         public ActionResult UsedPrice(string sName)
         {
-            Rentals oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
+            Instrument oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
 
             //shows the used price
             ViewBag.InstrumentName = oInstrument.InstrumentName;
-            ViewBag.Used = oInstrument.UsedPrice;
+            //ViewBag.Used = oInstrument.UsedPrice;
             ViewBag.New = "";
 
             return View("CheckPrices");
@@ -54,12 +54,12 @@ namespace BlowOut_Checkpoint1.Controllers
 
         public ActionResult NewPrice(string sName)
         {
-            Rentals oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
+            Instrument oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
 
             //shows the new price
             ViewBag.InstrumentName = oInstrument.InstrumentName;
             ViewBag.Used = "";
-            ViewBag.New = oInstrument.NewPrice;
+            //ViewBag.New = oInstrument.NewPrice;
 
             return View("CheckPrices");
         }
