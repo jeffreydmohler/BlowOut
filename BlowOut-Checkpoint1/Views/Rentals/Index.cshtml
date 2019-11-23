@@ -41,8 +41,8 @@
                                 src = "/Content/Images/saxophone.jpg";
                                 break;
                         }
-                        //<a href="@Url.Action("CheckPrices", "Rentals", new { iCode = iCode })"> <img class="img" src="@src" /></a>
-                        <a href="@Url.Action("Create", "Clients", new { ID = iCode })"> <img class="img" src="@src" /></a>
+                        <a href="@Url.Action("CheckPrices", "Rentals", new { InstrumentName = iName })"> <img class="img" src="@src" /></a>
+                        //<a href="@Url.Action("Create", "Clients", new { ID = iCode })"> <img class="img" src="@src" /></a>
                     }
                 </p>
             </div>
