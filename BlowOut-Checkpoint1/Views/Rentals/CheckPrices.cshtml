@@ -10,11 +10,10 @@
 
     <h2>@ViewBag.Instrument1.InstrumentName</h2>
 
-    @{ //variable to pass back to other methods
-        string sName = ViewBag.InstrumentName;}
-    <button class="btn-block" onclick="location.href='@Url.Action("NewPrice", "Rentals", new { sName = sName })'">Buy New</button>
+
+    <button class="btn-block" onclick="location.href='@Url.Action("Create", "Clients", new { ID = ViewBag.Instrument1.InstrumentCode })'">Buy New</button>
     <p> @ViewBag.Instrument1.Price </p>
-    <button class="btn-block" onclick="location.href='@Url.Action("UsedPrice", "Rentals", new { sName = sName })'">Buy Used</button>
+    <button class="btn-block" onclick="location.href='@Url.Action("Create", "Clients", new { ID = ViewBag.Instrument1.InstrumentCode })'">Buy Used</button>
     <p> @ViewBag.Instrument2.Price </p>
 
 

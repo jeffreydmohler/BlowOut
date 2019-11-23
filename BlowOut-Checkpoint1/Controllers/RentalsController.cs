@@ -31,17 +31,35 @@ namespace BlowOut_Checkpoint1.Controllers
         }
 
         //returns basic page when you click on instruments
-        public ActionResult CheckPrices(int InstrumentName)
+        public ActionResult CheckPrices(string InstrumentName)
         {
+            List<int> lstInst = new List<int>();
             //finds rental object on instrument code
             //Instruments oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
-            Instruments oInstrument = db.instruments.Find(InstrumentName);
+
+            foreach (var item in db.instruments.ToList())
+            {
+                if (InstrumentName == item.InstrumentName)
+                {
+                    lstInst.Add(item.InstrumentCode);
+                }
+            }
 
             //loads up viewbag for each item wanted
-            ViewBag.Instrument1 = oInstrument;
-            ViewBag.Instrument2 = 
+            Instruments oInstrument1 = db.instruments.Find(lstInst[0]);
+            ViewBag.Instrument1 = oInstrument1;
 
-            return View(oInstrument);
+            Instruments oInstrument2 = db.instruments.Find(lstInst[1]);
+            ViewBag.Instrument2 = oInstrument2;
+
+            /*for (var iCount = 0; iCount < lstInst.Count; iCount++)
+            {
+                string sInstrument = "oInstrument" + iCount;
+                Instruments sInstrument = db.instruments.Find(lstInst[iCount]);
+                ViewBag.Instrument1 = oInstrument1;
+            }*/
+
+            return View();
         }
 /*
         public ActionResult UsedPrice(string sName)
