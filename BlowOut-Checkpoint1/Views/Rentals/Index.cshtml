@@ -1,5 +1,5 @@
 ﻿<body class="body">
-    @model IEnumerable<BlowOut_Checkpoint1.Models.Instrument>
+    @model IEnumerable<BlowOut_Checkpoint1.Models.Instruments>
 
     @{
         ViewBag.Title = "Index";
@@ -42,7 +42,7 @@
                                 break;
                         }
                         //<a href="@Url.Action("CheckPrices", "Rentals", new { iCode = iCode })"> <img class="img" src="@src" /></a>
-                        <a href="@Url.Action("Create", "Clients")"> <img class="img" src="@src" /></a>
+                        <a href="@Url.Action("Create", "Clients", new { ID = iCode })"> <img class="img" src="@src" /></a>
                     }
                 </p>
             </div>

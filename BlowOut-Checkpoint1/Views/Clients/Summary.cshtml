@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Summary";
+}
+<br /><br />
+<h2>Order Confirmation</h2>
+
+<h3>Thank you @ViewBag.Client.ClientFirstName @ViewBag.Client.ClientLastName for completing an order.</h3>
+<br />
+
+@{ decimal total = @ViewBag.Instruments.Price * 18;}
+
+<h4>Order Info</h4>
+Order Number: @ViewBag.Client.ClientID <br />
+Instrument: @ViewBag.Instruments.InstrumentName <br />
+New or Used: @ViewBag.Instruments.InstrumentType <br />
+Monthly Price: @ViewBag.Instruments.Price <br />
+Total Amount after 18 months: @total
+
+<br />
+<br />
+
+@{ //switch statement to show which picture to show
+        String src = "";
+        int iCode = @ViewBag.Instruments.InstrumentCode; }
+
+ @{   switch (iCode)
+    {
+        case 1:
+            src = "/Content/Images/Trumpet.png";
+            break;
+        case 2:
+            src = "/Content/Images/trombone.jpg";
+            break;
+        case 3:
+            src = "/Content/Images/tuba.jpg";
+            break;
+        case 4:
+            src = "/Content/Images/flute.jpg";
+            break;
+        case 5:
+            src = "/Content/Images/clarinet.jpg";
+            break;
+        case 6:
+            src = "/Content/Images/saxophone.jpg";
+            break;
+    }
+     <img src="@src" />
+}
+
+
+
+

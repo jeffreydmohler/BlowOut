@@ -1,4 +1,5 @@
-﻿using BlowOut_Checkpoint1.Models;
+﻿using BlowOut_Checkpoint1.DAL;
+using BlowOut_Checkpoint1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,28 +10,32 @@ namespace BlowOut_Checkpoint1.Controllers
 {
     public class RentalsController : Controller
     {
+        private BlowOutContext db = new BlowOutContext();
+
         //list of all rental items using rentals class
-        public static List<Instrument> lstRentals = new List<Instrument>()
+        /*public static List<Instruments> lstRentals = new List<Instruments>()
         {
-            new Instrument{ InstrumentCode = 1, InstrumentName = "Trumpet", Price = 55},
-            new Instrument{ InstrumentCode = 2, InstrumentName = "Trombone", Price = 60},
-            new Instrument{ InstrumentCode = 3, InstrumentName = "Tuba", Price = 70},
-            new Instrument{ InstrumentCode = 4, InstrumentName = "Flute", Price = 40},
-            new Instrument{ InstrumentCode = 5, InstrumentName = "Clarinet", Price = 35},
-            new Instrument{ InstrumentCode = 6, InstrumentName = "Saxophone", Price = 42},
-        };
+            new Instruments{ InstrumentCode = 1, InstrumentName = "Trumpet", Price = 55},
+            new Instruments{ InstrumentCode = 2, InstrumentName = "Trombone", Price = 60},
+            new Instruments{ InstrumentCode = 3, InstrumentName = "Tuba", Price = 70},
+            new Instruments{ InstrumentCode = 4, InstrumentName = "Flute", Price = 40},
+            new Instruments{ InstrumentCode = 5, InstrumentName = "Clarinet", Price = 35},
+            new Instruments{ InstrumentCode = 6, InstrumentName = "Saxophone", Price = 42},
+        };*/
 
         // GET: Rentals
         public ActionResult Index()
         {
-            return View(lstRentals);
+            //return View(lstRentals);
+            return View(db.instruments.ToList());
         }
-
+/*
         //returns basic page when you click on instruments
         public ActionResult CheckPrices(int iCode)
         {
             //finds rental object on instrument code
-            Instrument oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
+            //Instruments oInstrument = lstRentals.Find(x => x.InstrumentCode == iCode);
+            Instruments oInstrument = db.instruments.Find(x => x.InstrumentCode == iCode);
 
             //loads up viewbag for each item wanted
             ViewBag.InstrumentName = oInstrument.InstrumentName;
@@ -42,7 +47,7 @@ namespace BlowOut_Checkpoint1.Controllers
 
         public ActionResult UsedPrice(string sName)
         {
-            Instrument oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
+            Instruments oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
 
             //shows the used price
             ViewBag.InstrumentName = oInstrument.InstrumentName;
@@ -54,7 +59,7 @@ namespace BlowOut_Checkpoint1.Controllers
 
         public ActionResult NewPrice(string sName)
         {
-            Instrument oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
+            Instruments oInstrument = lstRentals.Find(x => x.InstrumentName == sName);
 
             //shows the new price
             ViewBag.InstrumentName = oInstrument.InstrumentName;
@@ -62,6 +67,6 @@ namespace BlowOut_Checkpoint1.Controllers
             //ViewBag.New = oInstrument.NewPrice;
 
             return View("CheckPrices");
-        }
+        }*/
     }
 }

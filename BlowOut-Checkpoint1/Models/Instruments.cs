@@ -6,8 +6,8 @@ using System.Linq;
 using System.Web;
 namespace BlowOut_Checkpoint1.Models
 {
-    [Table("Instrument")]
-    public class Instrument
+    [Table("Instruments")]
+    public class Instruments
     {
         [Key]
         [Required]
@@ -25,7 +25,7 @@ namespace BlowOut_Checkpoint1.Models
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
-        [Required]
-        public int ClientID { get; set; }
+        
+        public int? ClientID { get; set; }
     }
 }

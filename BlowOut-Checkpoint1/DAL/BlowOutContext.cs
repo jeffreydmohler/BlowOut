@@ -14,7 +14,7 @@ namespace BlowOut_Checkpoint1.DAL
 
         }
 
-        public DbSet<Instrument> Instruments { get; set; }
+        public DbSet<Instruments> instruments { get; set; }
         public DbSet<Client> Clients { get; set; }
     }
 }

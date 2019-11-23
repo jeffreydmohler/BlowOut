@@ -37,7 +37,7 @@ namespace BlowOut_Checkpoint1.Controllers
         }
 
         // GET: Clients/Create
-        public ActionResult Create()
+        public ActionResult Create(int ID)
         {
             return View();
         }
@@ -47,13 +47,21 @@ namespace BlowOut_Checkpoint1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone")] Client client)
+        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone")] Client client, int ID)
         {
             if (ModelState.IsValid)
             {
                 db.Clients.Add(client);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                Instruments instrument = db.instruments.Find(ID);
+
+                instrument.ClientID = client.ClientID;
+                db.Entry(instrument).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Summary", new { ClientID = client.ClientID, InstrumentCode = instrument.InstrumentCode }); 
             }
 
             return View(client);
@@ -116,6 +124,17 @@ namespace BlowOut_Checkpoint1.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Summary(int ClientID, int InstrumentCode)
+        {
+            Client client = db.Clients.Find(ClientID);
+            Instruments instrument = db.instruments.Find(InstrumentCode);
+
+            ViewBag.Client = client;
+            ViewBag.Instruments = instrument;
+
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -124,5 +143,6 @@ namespace BlowOut_Checkpoint1.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
