@@ -17,32 +17,32 @@
 
                 <p>
                     @{ //switch statement to show which picture to show
-                        String src = "";
-                        int iCode = item.InstrumentCode;
+                        string src = "";
+                        string iName = item.InstrumentName;
 
-                        switch (iCode)
+                        switch (iName)
                         {
-                            case 1:
+                            case "Trumpet":
                                 src = "/Content/Images/Trumpet.png";
                                 break;
-                            case 2:
+                            case "Trombone":
                                 src = "/Content/Images/trombone.jpg";
                                 break;
-                            case 3:
+                            case "Tuba":
                                 src = "/Content/Images/tuba.jpg";
                                 break;
-                            case 4:
+                            case "Flute":
                                 src = "/Content/Images/flute.jpg";
                                 break;
-                            case 5:
+                            case "Clarinet":
                                 src = "/Content/Images/clarinet.jpg";
                                 break;
-                            case 6:
+                            case "Saxophone":
                                 src = "/Content/Images/saxophone.jpg";
                                 break;
                         }
-                        <a href="@Url.Action("CheckPrices", "Rentals", new { InstrumentName = iName })"> <img class="img" src="@src" /></a>
-                        //<a href="@Url.Action("Create", "Clients", new { ID = iCode })"> <img class="img" src="@src" /></a>
+                        //<a href="@Url.Action("CheckPrices", "Rentals", new { iCode = iCode })"> <img class="img" src="@src" /></a>
+                        <a href="@Url.Action("Create", "Clients", new { ID = iName })"> <img class="img" src="@src" /></a>
                     }
                 </p>
             </div>
