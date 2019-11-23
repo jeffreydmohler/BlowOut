@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 namespace BlowOut_Checkpoint1.Models
 {
-    [Table("Client") ]
+    [Table("Client")]
     public class Client
     {
         [Key]
