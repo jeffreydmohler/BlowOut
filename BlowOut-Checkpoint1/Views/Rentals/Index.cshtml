@@ -10,42 +10,51 @@
     <h2>Rentals</h2>
 
     <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4">
-                <h3>@Html.DisplayFor(modelItem => item.InstrumentName)</h3>
 
-                <p>
-                    @{ //switch statement to show which picture to show
-                        string src = "";
-                        string sName = item.InstrumentName;
+        @{List<string> lsVerify = new List<string>(); }
 
-                        switch (sName)
-                        {
-                            case "Trumpet":
-                                src = "/Content/Images/Trumpet.png";
-                                break;
-                            case "Trombone":
-                                src = "/Content/Images/trombone.jpg";
-                                break;
-                            case "Tuba":
-                                src = "/Content/Images/tuba.jpg";
-                                break;
-                            case "Flute":
-                                src = "/Content/Images/flute.jpg";
-                                break;
-                            case "Clarinet":
-                                src = "/Content/Images/clarinet.jpg";
-                                break;
-                            case "Saxophone":
-                                src = "/Content/Images/saxophone.jpg";
-                                break;
-                        }
-                        <a href="@Url.Action("CheckPrices", "Rentals", new { InstrumentName = sName })"> <img class="img" src="@src" /></a>
-                        //<a href="@Url.Action("Create", "Clients", new { ID = iCode })"> <img class="img" src="@src" /></a>
+                @foreach (var item in Model)
+                {
+
+                    if (!(lsVerify.Contains(item.InstrumentName)))
+                    {
+                        lsVerify.Add(item.InstrumentName);
+                        <div class="col-md-4">
+                            <h3>@Html.DisplayFor(modelItem => item.InstrumentName)</h3>
+
+                            <p>
+                                @{ //switch statement to show which picture to show
+                                    string src = "";
+                                    string sName = item.InstrumentName;
+
+                                    switch (sName)
+                                    {
+                                        case "Trumpet":
+                                            src = "/Content/Images/Trumpet.png";
+                                            break;
+                                        case "Trombone":
+                                            src = "/Content/Images/trombone.jpg";
+                                            break;
+                                        case "Tuba":
+                                            src = "/Content/Images/tuba.jpg";
+                                            break;
+                                        case "Flute":
+                                            src = "/Content/Images/flute.jpg";
+                                            break;
+                                        case "Clarinet":
+                                            src = "/Content/Images/clarinet.jpg";
+                                            break;
+                                        case "Saxophone":
+                                            src = "/Content/Images/saxophone.jpg";
+                                            break;
+                                    }
+                                    <a href="@Url.Action("CheckPrices", "Rentals", new { InstrumentName = sName })"> <img class="img" src="@src" /></a>
+                                    //<a href="@Url.Action("Create", "Clients", new { ID = iCode })"> <img class="img" src="@src" /></a>
+                                }
+                            </p>
+                        </div>
                     }
-                </p>
-            </div>
-        }
+
+                }
     </div>
 </body>
