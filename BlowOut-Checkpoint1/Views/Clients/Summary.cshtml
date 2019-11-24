@@ -14,8 +14,8 @@
 Order Number: @ViewBag.Client.ClientID <br />
 Instrument: @ViewBag.Instruments.InstrumentName <br />
 New or Used: @ViewBag.Instruments.InstrumentType <br />
-Monthly Price: @ViewBag.Instruments.Price <br />
-Total Amount after 18 months: @total
+Monthly Price: $@ViewBag.Instruments.Price <br />
+Total Amount after 18 months: $@total
 
 <br />
 <br />
@@ -45,7 +45,7 @@ Total Amount after 18 months: @total
             src = "/Content/Images/saxophone.jpg";
             break;
     }
-     <img src="@src" />
+     <img class="img" src="@src" />
 }
 
 

@@ -5,3 +5,9 @@
 
 @Html.Raw((string)ViewBag.Error)
 
+@*Sign up for Emails Here
+@Html.BeginForm()
+Name: @{string name = <input type = "text" />}
+Email: @{string email = <input type = "text" />}
+@Html.ActionLink("Sign Up","Email", "Contact", new { name = name, email = email })
+*@
