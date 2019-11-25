@@ -16,7 +16,8 @@ namespace BlowOut_Checkpoint1.Controllers
         private BlowOutContext db = new BlowOutContext();
 
         // GET: Clients
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult UpdateData()
         {
             return View(db.Clients.ToList());
         }

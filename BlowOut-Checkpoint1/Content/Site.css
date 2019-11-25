@@ -10,6 +10,9 @@
     background-repeat: no-repeat;
 }
 
+input {
+    color: black;
+}
 
 .img {
     height: 150px;
