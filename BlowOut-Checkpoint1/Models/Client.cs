@@ -52,7 +52,7 @@ namespace BlowOut_Checkpoint1.Models
 
         [Required]
         [Phone]
-        [StringLength(20, MinimumLength = 7, ErrorMessage = "First name must be 7-20 characters long.")]
+        [StringLength(15, MinimumLength = 10, ErrorMessage = "Phone must be 10-15 digits long.")]
         [Display(Name = "Client Phone")]
         public string ClientPhone { get; set; }
 
