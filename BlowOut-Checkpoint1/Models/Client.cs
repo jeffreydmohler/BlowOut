@@ -55,5 +55,8 @@ namespace BlowOut_Checkpoint1.Models
         [StringLength(20, MinimumLength = 7, ErrorMessage = "First name must be 7-20 characters long.")]
         [Display(Name = "Client Phone")]
         public string ClientPhone { get; set; }
+
+        public int? InstrumentCode { get; set; }
+        public virtual Instruments Instruments { get; set; }
     }
 }

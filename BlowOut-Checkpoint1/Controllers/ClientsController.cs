@@ -16,9 +16,12 @@ namespace BlowOut_Checkpoint1.Controllers
         private BlowOutContext db = new BlowOutContext();
 
         // GET: Clients
-        [Authorize]
+        //[Authorize]
         public ActionResult UpdateData()
         {
+            List<Client> lstclients = db.Clients.ToList();
+            
+
             return View(db.Clients.ToList());
         }
 
@@ -50,15 +53,19 @@ namespace BlowOut_Checkpoint1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone")] Client client, int ID)
         {
+            client.InstrumentCode = ID;
+            client.Instruments = db.instruments.Find(ID);
             if (ModelState.IsValid)
             {
+                
                 db.Clients.Add(client);
                 db.SaveChanges();
 
                 Instruments instrument = db.instruments.Find(ID);
+                
 
-                instrument.ClientID = client.ClientID;
-                db.Entry(instrument).State = EntityState.Modified;
+                //instrument.ClientID = client.ClientID;
+                //db.Entry(instrument).State = EntityState.Modified;
 
                 db.SaveChanges();
 
@@ -88,13 +95,13 @@ namespace BlowOut_Checkpoint1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone")] Client client)
+        public ActionResult Edit([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone, InstrumentCode")] Client client)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UpdateData");
             }
             return View(client);
         }
@@ -122,7 +129,7 @@ namespace BlowOut_Checkpoint1.Controllers
             Client client = db.Clients.Find(id);
             db.Clients.Remove(client);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("UpdateData");
         }
 
         public ActionResult Summary(int ClientID, int InstrumentCode)

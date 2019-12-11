@@ -4,13 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br /><br />
+<h2>Update Order Data</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            Order Number
+        </th>
+        <th>
+            Instrument
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Monthly Price
+        </th>
+        <th>
+            Total Price
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ClientFirstName)
         </th>
@@ -41,6 +57,23 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.ClientID)
+        </td>
+        <td>
+           @Html.DisplayFor(modelItem => item.Instruments.InstrumentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instruments.InstrumentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instruments.Price)
+        </td>
+        <td>
+            @{ decimal total = item.Instruments.Price * 18; }
+            @total
+        </td>
+
+        <td>
             @Html.DisplayFor(modelItem => item.ClientFirstName)
         </td>
         <td>
@@ -65,9 +98,9 @@
             @Html.DisplayFor(modelItem => item.ClientPhone)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClientID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClientID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClientID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClientID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClientID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClientID })
         </td>
     </tr>
 }

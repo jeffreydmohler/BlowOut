@@ -25,7 +25,5 @@ namespace BlowOut_Checkpoint1.Models
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
-        
-        public int? ClientID { get; set; }
     }
 }
